@@ -1,0 +1,26 @@
+{
+    "genericErrMsg": {
+		"200": "Success.",
+		"404": "Not Found",
+		"440": "Token Expire.",
+		"498": "Invalid Token.",
+		"500": "Internal server error.",
+		"501": "Implement  error."
+    },
+    "userErrMsg": {
+		"200": "successfully got a token",
+		"400": "Bad Request.",
+		"402": "Incorrect Password.",
+		"405": "No records found",
+		"406": "found something",
+		"409": "your account can't be accessed",
+		"410": "oops! saving failed",
+		"411": "fetching account failed",
+		"412": "Account is'nt here",
+		"413": "Error while some data updation",
+		"414": "Token generation failed",
+		"415": "updated successfully",
+		"417": "deleted successfully"
+	}
+
+}
