@@ -1,5 +1,5 @@
 "use strict";
-const customer = require('../../models/sampleDBManage/customer');
+const test = require('../../../../models/test')
 const joi = require('joi');
 const bcrypt = require('bcrypt');
 
@@ -21,7 +21,7 @@ let handler = async (request, h) => {
         return await bcrypt.hash(request.payload.password, salt);   
     }
     request.payload.password=await hashPassword();
-    let result = await customer.signup(request.payload);
+    let result = await test.signup(request.payload);
     return await result;
 }
 

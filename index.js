@@ -1,5 +1,5 @@
 'use strict'
-    require('dotenv').config({ path: '/var/env/.env' });
+    require('dotenv').config();
 
 const logger = require('winston');
 const semver = require('semver'); 
@@ -24,3 +24,4 @@ if (type === 'web') { require('./web'); }
 else if
  (type === 'worker') { require('./worker'); }
 else { throw new Error(`${type} is an unsupported process type.`); }
+//

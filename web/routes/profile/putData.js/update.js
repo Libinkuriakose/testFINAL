@@ -1,6 +1,6 @@
 "use strict";
 const joi = require('joi');
-const customer = require('../../models/sampleDBManage/customer');
+const test = require('../../../../models/test')
 const ObjectID = require('mongodb').ObjectID;
 
 const joiObject = joi.object({
@@ -22,7 +22,7 @@ let handler = async (request, h) => {
         data:request.payload,
         options:{returnOriginal:false}
     }
-    let result = await customer.findOneAndUpdate(queryData);
+    let result = await test.findOneAndUpdate(queryData);
     return await result;
 }
 

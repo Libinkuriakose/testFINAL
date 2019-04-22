@@ -1,10 +1,9 @@
 'use strict'
 
 const url = 'mongodb://localhost:27017/sampleHapiApp';
-const logger = require('winston');
 const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
-
+const logger = require('winston');
+// const MongoClient = mongodb.MongoClient;
 let state = { db: null };
 
 /**

@@ -1,6 +1,6 @@
 'use strict';
 const HAPI_AUTH_JWT = require('hapi-auth-jwt2');
-const auth = require('../../models/sampleDBManage/auth');
+const auth = require('../../models/common/auth');
 var AUTH = module.exports = {};
 
 let secretKey = 'isSecret';

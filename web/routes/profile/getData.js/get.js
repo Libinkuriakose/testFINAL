@@ -1,7 +1,7 @@
 "use strict";
-const customer = require('../../models/sampleDBManage/customer')
+const test = require('../../../../models/test')
 let handler = async (request, h) => {
-    const data= await customer.getAll(request);
+    const data= await test.getAll(request);
     return await data;
 };
 

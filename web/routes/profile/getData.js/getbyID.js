@@ -1,9 +1,9 @@
 "use strict";
-const customer = require('../../models/sampleDBManage/customer')
+const test = require('../../../../models/test')
 
 let handler = async (request, h) => {
     console.log(request._id);
-    const data= await customer.getbyID(request._id);
+    const data= await test.getbyID(request._id);
     return await data;
 };
 

@@ -1,7 +1,7 @@
 
 "use strict";
 const joi = require('joi');
-const customer = require('../../models/sampleDBManage/customer');
+const test = require('../../../../models/test')
 const joiObject = joi.object({
     userName:joi.string().required().description('account name'),
     password: joi.string().required().description('password'),
@@ -10,7 +10,7 @@ const joiObject = joi.object({
 
 
 let handler = async (request, h) => {
-    return await customer.signin(request.payload);
+    return await test.signin(request.payload);
 }
 
 module.exports={
