@@ -11,10 +11,10 @@ const codeCheck = async (userName,accessCode)=>{
     return new Promise((resolve, reject) => {
     db.get().collection(tablename).findOne(condition,(err,result)=>{
         err 
-          ? reject()
+          ? resolve(-1)
           : result
                     ? resolve('success')
-                    : reject()
+                    : resolve(-2);
     })
 });
 }

@@ -2,9 +2,9 @@
 
 
 const deleteData = require('./deleteData');
-const getData = require('./getData.js');
-const postData = require('./postData.js');
-const putData = require('./putData.js');
+const getData = require('./getData');
+const postData = require('./postData');
+const putData = require('./putData');
 
 module.exports = [].concat(
     deleteData,

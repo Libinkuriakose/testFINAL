@@ -20,7 +20,8 @@
 		"413": "Error while some data updation",
 		"414": "Token generation failed",
 		"415": "updated successfully",
-		"417": "deleted successfully"
+		"417": "deleted successfully",
+		"418": "userName not unique"
 	}
 
 }
