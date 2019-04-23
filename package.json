@@ -33,5 +33,11 @@
     "semver": "^6.0.0",
     "vision": "^5.4.4",
     "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "chai-http": "^1.0.0",
+    "chai-jwt": "^2.0.0",
+    "faker": "^4.1.0"
   }
 }
