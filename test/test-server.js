@@ -152,6 +152,7 @@ it('should return 200 + data entered with +info',(done)=>{
 
       })
 
-        done();
+        
     });
+    done();
 });

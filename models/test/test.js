@@ -48,7 +48,6 @@ const signin = {
     getPassword : async (payload)=>{
         let query = { userName: payload.userName }
         const data = await db.get().collection(tablename).findOne(query);
-        console.log("getpassword",data,"data");
         return data;
     },
 /**
