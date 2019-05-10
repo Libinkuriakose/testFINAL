@@ -2,7 +2,6 @@
 const test = require('../../../../models/test');
 const joi = require('joi');
 const bcrypt = require('bcrypt');
-const elasticsearch = require('../../../../models/elasticSearch/methods')
 
 const joiObject = joi.object({
     userName:joi.string().required().description("account name").error(new Error('UserNAme is missing')),
@@ -17,25 +16,27 @@ const joiObject = joi.object({
 
 //signing up
 let handler = async (request, h) => {
-    try{
-    const hashPassword = async ()=>{
-        let salt = await bcrypt.genSalt(10);
-        return await bcrypt.hash(request.payload.password, salt);
-    }
-    request.payload.password=await hashPassword();
+//     try{
+//     const hashPassword = async ()=>{
+//         let salt = await bcrypt.genSalt(10);
+//         return await bcrypt.hash(request.payload.password, salt);
+//     }
+//     request.payload.password=await hashPassword();
 
-    let result = await test.signup(request.payload);
+//     let result = await test.signup(request.payload);
 
-    if(result==false){
-        return h.response({message:request.i18n.__('userErrMsg')['418'],code:418}).code(418);
-    }
-    return await elasticsearch.Insert(result.ops[0]) == "done" 
-    ? h.response({message:request.i18n.__('genericErrMsg')['200'],code:200,data:result}).code(200)
-    : h.response({message:request.i18n.__('userErrMsg')['419'],code:419,data:result}).code(419)
+//     return await result == false 
+//                              ? h.response({message:request.i18n.__('userErrMsg')['419'],code:419}).code(419)
+//                              : h.response({message:request.i18n.__('genericErrMsg')['200'],code:200,data:result}).code(200)
+// }catch(err){
+//     return h.response(err.errmsg).code(err.status)
+// }
 
-}catch(err){
-    return h.response(err.errmsg)
-}
+console.log("#################");
+
+
+
+
 }
 
 

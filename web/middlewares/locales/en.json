@@ -21,7 +21,8 @@
 		"414": "Token generation failed",
 		"415": "updated successfully",
 		"417": "deleted successfully",
-		"418": "userName not unique"
+		"418": "userName not unique",
+		"419": "err with elasticSearch"
 	}
 
 }

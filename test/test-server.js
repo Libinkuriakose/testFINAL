@@ -6,19 +6,19 @@ const chaiJWT = require('chai-jwt');
 const faker = require('faker') ;
 chai.use(chaiJWT);
 chai.use(chaiHttp);
-const baseURL =  'http://localhost:3004';
+const baseURL =  'http://localhost:3005';
 
 
 
  const HeadersLocal ={
-    host: 'localhost:3004',
+    host: 'localhost:3005',
     connection: 'keep-alive',
     accept: 'application/json',
     authorization: '',
     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/68.0.3440.75 Chrome/68.0.3440.75 Safari/537.36',
     lan: 'en',
-    referer: 'http://localhost:3004/documentation',
-    referer: 'http://localhost:3004',
+    referer: 'http://localhost:3005/documentation',
+    referer: 'http://localhost:3005',
     'accept-encoding': 'gzip, deflate, br',
     'accept-language': 'en-US,en;q=0.9' 
   } 
@@ -51,15 +51,16 @@ const loginCreds = {
     password : "password"
 }
 
-
 let token = '';
 
+console.log("executed1");
 
 it('should return 200 + data entered with +info',(done)=>{
     chai.request(baseURL)
     .post('/test/profile/signup')
     .send(payload)
     .end((err,res)=>{
+      console.log("executed2");
       res.should.have.status(200);
       res.should.be.json;
       res.body.should.be.a('object');
@@ -138,6 +139,7 @@ it('should return 200 + data entered with +info',(done)=>{
               res.body.should.have.property('message');
               res.body.should.have.property('data');
               res.body.should.have.property('code');
+              console.log("executed");
               res.body.code.should.equal(200);
             })
 
@@ -152,7 +154,7 @@ it('should return 200 + data entered with +info',(done)=>{
 
       })
 
-        
+      done();
+      
     });
-    done();
 });

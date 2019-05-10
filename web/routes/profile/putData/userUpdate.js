@@ -3,6 +3,7 @@ const joi = require('joi');
 const test = require('../../../../models/test');
 const ObjectID = require('mongodb').ObjectID;
 const _ = require('lodash');
+const elasticsearch = require('../../../../models/elasticSearch/methods')
 
 const joiObject = joi.object({
     userName:joi.string().required().description('account name').error(new Error('UserNAme is missing')),
@@ -26,11 +27,12 @@ let handler = async (request, h) => {
     queryObj.isChanged = (request.payload.userName == request.userName )? false: true;
 
     let result = await test.findOneAndUpdate(queryObj);
+    let elasticRES = await elasticsearch.Update(request._id,request.payload);
     return await result.hasOwnProperty('value') 
-                             ? h.response({message:request.i18n.__('genericErrMsg')['200'],code:200,data:result}).code(200)
+                             ? h.response({message:request.i18n.__('genericErrMsg')['200'],code:200,data:elasticRES}).code(200)
                              : result != false
                              ? h.response({message:request.i18n.__('userErrMsg')['413'],code:413}).code(413)
-                             : h.response({message:request.i18n.__('userErrMsg')['419'],code:419}).code(419)
+                             : h.response({message:request.i18n.__('userErrMsg')['418'],code:418}).code(418)
 
 
     }catch(err){

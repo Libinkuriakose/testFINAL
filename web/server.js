@@ -8,15 +8,22 @@ const logger = require('winston');
 // const monitx = require('Node-monitx');
 
 if (cluster.isMaster) {
-
+    console.log( `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` );
     logger.info(`Master ${process.pid} is running`);
 
     //To make booking and driver sync in Redis And Mongo
+    const elasticSearch = require('../models/elasticSearch');
     const db = require('../models/mongodb');
     db.connect(() => {
-        // const syncBookingsAndDrivers = require('./commonModels/syncBookingsAndDrivers');
-        // syncBookingsAndDrivers.syncDrivers(() => {});
-        // syncBookingsAndDrivers.syncBookings(() => {});
+        // if(!err){
+        //     elasticSearch.connect((err,result) => {
+        //         if(err){
+        //             logger.error("elasticSearch connection ",err)
+        //         }
+        //     });
+        // }else{
+        //     logger.error("mongoDB connection ",err)
+        // }
         logger.info(`master side DB  is running`);
     }); //create a connection to mongodb
 
@@ -26,15 +33,6 @@ if (cluster.isMaster) {
         logger.info(`Forking process number ${i}...`);
     }
 
-    //for Redis Event
-    // const redisEvent = require('../redisEventListner');
-
-    //*******Node-Monitx code***************
-    // var metricsServer = express();
-    // metricsServer.listen(3002, () => {});
-    // metricsServer.use('', trace.MetricsCluster(metricsServer, express));
-    // metricsServer.use('', trace.SnapshotExpress(metricsServer, express));
-    //*******Node-Monitx code***************
 
     // Listen for dying workers
     cluster.on('exit', function (worker) {
@@ -58,7 +56,7 @@ if (cluster.isMaster) {
     const authVal = require("./middlewares/authStrategy");
     const middleware = require('./middlewares/i18')
     const swagger = require('./middlewares/swagger')
-
+    const elasticSearch = require('../models/elasticSearch');
     const db = require('../models/mongodb');
     const port = 3004;
     const config = { port };
@@ -81,6 +79,7 @@ if (cluster.isMaster) {
         // start the server
         await server.start();
         await db.connect();
+        await elasticSearch.connect();
 
         console.log( `Server running at  http://localhost:${ port }` );
     } catch ( err ) {

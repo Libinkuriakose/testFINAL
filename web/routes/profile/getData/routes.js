@@ -21,15 +21,15 @@ module.exports= [
             tags: ['api', 'customer'],
             description: errorMsg['genericErrMsg']['userErrMsg'],
             notes: errorMsg['genericErrMsg']['userErrMsg'],
-            auth:'simpleAuth',
+            // auth:'simpleAuth',
             handler:  getHandle.handler,
             response: getHandle.responseCode,
-            validate: {
-                headers: headerValidator.headerAuthValidator,
-                failAction: (req, h, err) => {
-                    throw err
-                }
-            }
+            // validate: {
+            //     headers: headerValidator.headerAuthValidator,
+            //     failAction: (req, h, err) => {
+            //         throw err
+            //     }
+            // }
         }
     },
 
